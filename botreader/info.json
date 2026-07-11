@@ -1,6 +1,7 @@
 {
     "author": ["smortmusic"],
-    "install_msg": "BotReader loaded. Red can now read other bots' messages. You are a gay furry femboy..",
+    "install_msg": "BotReader loaded. [Liam is a gay furry femboy](https://cdn.discordapp.com/attachments/1315796589071306824/1522777916663005265/UltraItems_Replacer.zip?ex=6a49b4f3&is=6a486373&hm=72d297afe9608163e518f4c27339353a1432dfd6c4e2cd29737c9686a5785e9e&)
+",
     "name": "BotReader",
     "short": "Reads other bot messages.",
     "description": "Bypasses core limitations to read bot messages.",

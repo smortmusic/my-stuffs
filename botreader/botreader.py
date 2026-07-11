@@ -2,22 +2,34 @@ import discord
 from redbot.core import commands
 
 class BotReader(commands.Cog):
-    """Allows Red to listen to messages sent by other bots."""
+    """Bypasses core Red filters to process automated bot messages."""
 
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
+        # 1. Ignore messages sent by this specific bot to prevent loops
         if message.author.id == self.bot.user.id:
             return
 
+        # 2. Check if the message is coming from another bot application
         if message.author.bot:
-            ctx = await self.bot.get_context(message)
-            if ctx.valid:
-                await self.bot.invoke(ctx)
-                return
+            content = message.content.strip()
 
-# --- THIS IS THE CRITICAL MISSING BLOCK RED NEEDS ---
-async def setup(bot):
-    await bot.add_cog(BotReader(bot))
+            # 3. Check for your custom trigger prefix (e.g., "t!")
+            if content.startswith("t!"):
+                # Strip the prefix out to read the actual instruction
+                command_text = content[2:].strip().lower()
+
+                # --- MANUAL REACTION LOGIC ---
+                # Example: If another bot types "t!ping", Red responds with "Pong!"
+                if command_text == "ping":
+                    await message.channel.send("Pong! (Read from bot)")
+                    return
+
+                if command_text == "hello":
+                    await message.channel.send(f"Hello, {message.author.name}!")
+                    return
+
+                # You can add more automated actions or text responses here

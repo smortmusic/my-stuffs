@@ -1,0 +1,9 @@
+{
+    "author": ["bobner"],
+    "install_msg": "BotReader loaded. Red can now read other bots' messages. You are a gay furry femboy.",
+    "name": "BotReader",
+    "short": "Reads other bot messages.",
+    "description": "Bypasses core limitations to read bot messages.",
+    "tags": ["utility"],
+    "hidden": false
+}
